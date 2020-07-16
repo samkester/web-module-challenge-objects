@@ -93,7 +93,7 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
 function getReviewByIndex(reviews, index) {
-    return `${reviews[index].name} gave the restaurant a ${reviews[index].rating}-star review and their feedback was: ${reviews[index].feedback}`;
+  return `${reviews[index].name} gave the restaurant a ${reviews[index].rating}-star review and their feedback was: ${reviews[index].feedback}`;
 }
 
 console.log(getReviewByIndex(reviews, 0));
@@ -108,7 +108,7 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
 function getLastReview(reviews) {
-    getReviewByIndex(reviews, reviews.length - 1);
+  return getReviewByIndex(reviews, reviews.length - 1);
 } 
 
 console.log(getLastReview(reviews));
@@ -154,10 +154,22 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
+
+function getLongReviews(reviews) {
+  let result = [];
+  for(let i = 0; i < reviews.length; i++)
+  {
+    let words = 1;
+    for(let j = 0; j < reviews[i].feedback.length; j++)
+    {
+      if(reviews[i].feedback[j] === " ") words++;
+    }
+    if(words > 15) result.push(reviews[i]);
   }
-  
+  return result;
+}
+
+console.log(getLongReviews(reviews));
 
 /* STRETCH 3:  This challenge is not related to the data above! 
 
